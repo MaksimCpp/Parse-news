@@ -35,10 +35,9 @@ def parse_news(url):
     paragraphs = new_soup.find_all('p')
 
     print("\nДлинный текст:")
-    for index in range(1, len(paragraphs)):
-        # Если без условия, то выводится в конце какой-то Консультантонлайн
-        if paragraphs[index].text.strip() != 'Консультантонлайн':
-            print(paragraphs[index].text.strip())
+    
+    for index in range(1, len(paragraphs) - 1):
+        print(paragraphs[index].text.strip())
 
     image_tag = new_soup.find('a', class_='gallery-item')
     # Имя папки с картинкой
