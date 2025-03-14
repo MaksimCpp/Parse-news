@@ -16,7 +16,11 @@ def parse_news(url):
     
     # Дата новости
     date = soup.find('div', class_='date').text.strip()
-    print(f'Заголовок: {title}\nДата: {date}')
+
+    # Короткий текст новости
+    text = soup.find('div', class_='text').text.strip()
+
+    print(f'Заголовок: {title}\nДата: {date}\nКороткий текст:\n{text}')
 
     # Ссылка новой страницы при нажатии на заголовок
     link = urljoin(url, soup.find('a', class_='title')['href'])
@@ -30,7 +34,7 @@ def parse_news(url):
     # Текст новости
     paragraphs = new_soup.find_all('p')
 
-    print("Текст:")
+    print("\nДлинный текст:")
     for index in range(1, len(paragraphs)):
         # Если без условия, то выводится в конце какой-то Консультантонлайн
         if paragraphs[index].text.strip() != 'Консультантонлайн':
